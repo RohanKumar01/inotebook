@@ -6,7 +6,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-lg bg-light">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
-              Navbar
+              iNotebook
             </Link>
             <button
               className="navbar-toggler"
@@ -34,17 +34,17 @@ const Navbar = () => {
                     About
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
-                  <Link
+                {/* <li className="nav-item dropdown"> */}
+                   {/* <Link
                     className="nav-link dropdown-toggle"
                     to="/"
                     role="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
-                  >
+                   >
                     Dropdown
-                  </Link>
-                  <ul className="dropdown-menu">
+                   </Link> */}
+                   {/* <ul className="dropdown-menu">
                     <li>
                       <Link className="dropdown-item" to="/">
                         Action
@@ -62,12 +62,9 @@ const Navbar = () => {
                       <Link className="dropdown-item" to="/">
                         Something else here
                       </Link>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled">Disabled</a>
-                </li>
+                    </li> */}
+                  {/* </ul> */}
+                {/* </li> */}
               </ul>
               <form className="d-flex" role="search">
                 <input
