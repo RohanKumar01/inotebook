@@ -1,32 +1,32 @@
 import './App.css';
+// import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Routes
+  Route
 } from "react-router-dom";
-import Navbar from './components/Navbar';
-import { Home } from './components/Home';
-import About  from './components/About';
+
+import Navbar from './Components/Navbar.js';
+import { Home } from './Components/Home.js';
+import About from './Components/About.js';
 
 function App() {
-  return ( 
+  return (
     <>
-    {/* <Navbar></Navbar>
-    <h1>thid is inotebook</h1> */}
-    <Router>
-      <Navbar /> 
-      <Routes>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/about">
-          <About/>
-        </Route> 
-      </Routes>
-    </Router>
-  </>
-);
+      <Router>
+        <Navbar /> 
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/about">
+            <About/>
+          </Route> 
+        </Switch>
+      </Router>
+    </>
+  );
 }
 
 export default App;
+
