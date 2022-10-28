@@ -11,6 +11,8 @@ import { Home } from './Components/Home.js';
 import About from './Components/About.js';
 import NoteState from './context/notes/NoteState';
 import { Alert } from './Components/Alert';
+import Signup from './Components/Signup';
+import Login from './Components/Login';
 
 function App() {
   return (
@@ -26,6 +28,12 @@ function App() {
               </Route>
               <Route exact path="/about">
                 <About />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
               </Route>
             </Switch>
           </div>
