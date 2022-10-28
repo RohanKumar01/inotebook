@@ -55,7 +55,7 @@ router.post(
 // ROUTE 3: Update an existing Note using: PUT "/api/notes/updatenote". Login required
 router.put("/updatenote/:id", fetchuser, async (req, res) => {    
   try {
-        
+    const {title, description, tag} = req.body;
   // Create a newNote object
   const newNote = {};
   if (title) {
@@ -74,6 +74,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
     return res.status(404).send("Not Found");
   }
 
+  // Id is not same and other person is tryng to update the note
   if (note.user.toString() !== req.user.id) {
     return res.status(401).send("Not Allowed");
   }
