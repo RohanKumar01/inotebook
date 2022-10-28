@@ -16,10 +16,13 @@ router.post('/createuser',[
    body('email').isEmail()
 
 ] , async(req,res)=>{
+
+   let success= false;
+
    //If there are errors, return Basd request and the errors
    const errors = validationResult(req);
    if (!errors.isEmpty()) {
-     return res.status(400).json({ errors: errors.array() });
+     return res.status(400).json({ sucess,errors: errors.array() });
    }
 
    //Check wheter user with same email already exist
@@ -29,6 +32,9 @@ try{
     let user = await User.findOne({email: req.body.email});
     //previous command will find of dupilicate email already exist in Databse or not.
     
+    if(user){
+      return res.status(400).json({ success, error: "Sorry a user with email already exist"})
+    }
 
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password, salt);
@@ -50,7 +56,8 @@ try{
     const authtoken = jwt.sign(data, JWT_SECRET);
     //  console.log(jwtData);
     //  res.json(user)
-    res.json({authtoken})
+    success = true;
+    res.json({success,authtoken})
    }
    catch(error){
     console.log(error.message);
