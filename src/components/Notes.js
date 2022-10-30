@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import noteContext from "../context/notes/noteContext"
 import AddNote from './AddNote';
 import Noteitem from './Noteitem';
@@ -6,9 +7,15 @@ import Noteitem from './Noteitem';
 
 const Notes = (props) => {
     const context = useContext(noteContext);
+    let history = useHistory();
     const { notes, getNotes, editNote } = context;
     useEffect(() => {
-        getNotes()
+        if(localStorage.getItem('token')){
+            getNotes()                         // If user is not logged in then redirect it to login in and if he logged in send him to geet notes.
+        }
+        else{
+            history.push("/login")
+        }
          // eslint-disable-next-line
     }, [])
 
