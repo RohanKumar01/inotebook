@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
     //forign key of user key
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
+    },
     title: {
         type: String,
         required: true
@@ -18,10 +22,6 @@ const NotesSchema = new Schema({
     Date:{
         type: Date,
         default: Date.now
-    },
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
     },
 
 });

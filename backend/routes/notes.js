@@ -2,14 +2,14 @@ const express = require("express");
 const User = require("../models/User");
 const Note = require("../models/Note");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
 const { body, validationResult } = require("express-validator");
 
 // ROUTE 1: Fetch All the Notes using: GET "/api/notes/fetchallnotes". Login required
 router.get("/fetchallnotes", fetchuser, async (req, res) => {
   try {
-    let note = await Note.find({ Note: req.user.id });
+    const note = await Note.find({ Note: req.user.id });
     res.json(note);
   } catch (error) {
     console.error(error.message);
@@ -18,10 +18,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
 });
 
 // ROUTE 2: Add a new Note using: POST "/api/notes/addnote". Login required
-router.post(
-  "/addnote",
-  fetchuser,
-  [
+router.post("/addnote", fetchuser, [
     body("title", "Enter a valid title").isLength({ min: 3 }),
     body("description", "Description must be atleast 5 characters").isLength({
       min: 5,
